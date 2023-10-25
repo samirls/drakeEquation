@@ -7,7 +7,7 @@ const DrawerData = [
   {
     title: "R∗",
     description1: "R* = the average rate of star formation in our Galaxy.",
-    myOpinion: "Opinion: This is the number we want to find!"
+    myOpinion: "Opinion: "
   },
   {
     title: "fp . ne",
