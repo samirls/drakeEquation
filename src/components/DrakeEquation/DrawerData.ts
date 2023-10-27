@@ -7,12 +7,13 @@ const DrawerData = [
   {
     title: "R∗",
     description1: "R* = the average rate of star formation in our Galaxy.",
-    myOpinion: "Opinion: "
+    myOpinion: "Opinion: Astronomers believe our galaxy is producing 1 to 7 stars per year"
   },
   {
     title: "fp . ne",
     description1: "fp = the fraction of those stars that have planets.",
     description2: "ne = the average number of planets that can potentially support life per star that has planets.",
+    myOpinion: "Opinion: Astronomers believe that 20% to 25% of the stars have planets orbiting them. But look at our solar system. There are 8 planets and many moons. I believe that there are many places that could hold life. By the same analogy, just few places could "
   },
   {
     title: "fl . fi",
