@@ -86,6 +86,7 @@ function SizeOfUniverse({ goToNextPage, tour }: sizeOfUniverseProps) {
           display: "flex",
           justifyContent: "center",
           paddingTop: "15px",
+          textAlign: "center",
         }}
         className={
           fadeOut
@@ -95,13 +96,11 @@ function SizeOfUniverse({ goToNextPage, tour }: sizeOfUniverseProps) {
       >
         The size of the Universe
       </h1>
-      <h1
-        style={{
-          fontSize: "1.3rem",
-          display: "flex",
-          justifyContent: "center",
-          paddingTop: "15px",
-        }}
+      <Box 
+        fontSize= "1.3rem" 
+        display= {{base: "none", lg:"flex"}}
+        justifyContent= "center"
+        paddingTop= "15px"
         className={
           fadeOut
             ? "animate__animated animate__fadeOutUp"
@@ -109,10 +108,10 @@ function SizeOfUniverse({ goToNextPage, tour }: sizeOfUniverseProps) {
         }
       >
         Click for more info
-      </h1>
+      </Box>
       <Box className={fadeOut ? "animate__animated animate__fadeOut" : ""}>
         <Box
-          sx={{ paddingTop: "80px" }}
+          paddingTop= {{base:"30px", lg:"80px"}}
           className="animate__animated animate__fadeIn"
         >
           <Swiper
@@ -187,7 +186,7 @@ function SizeOfUniverse({ goToNextPage, tour }: sizeOfUniverseProps) {
 
           <Box sx={{ display: "flex", justifyContent: "center" }} >
             <Button
-              sx={{ marginTop: "50px", width: "10%" }}
+              marginTop= {{base:"20px", lg:"50px"}}
               rightIcon={<HiArrowRight />}
               onClick={handleClick}
               id="step4"
@@ -197,16 +196,15 @@ function SizeOfUniverse({ goToNextPage, tour }: sizeOfUniverseProps) {
           </Box>
         </Box>
         <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            paddingTop: "5px",
-            gap: "5px",
-            position: "absolute",
-            bottom: "3",
-            right: "3",
-          }}
+          display="flex"
+          justifyContent= "center"
+          alignItems= "center"
+          paddingTop= "5px"
+          gap= "5px"
+          position= {{base: "static", lg:"absolute"}}
+          pt={{base:"10px", lg: '0px'}}
+          bottom= "3"
+          right= "3"
           className="animate__animated animate__fadeIn"
         >
           Source:

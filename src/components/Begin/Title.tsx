@@ -7,7 +7,9 @@ function Title() {
           fontSize: "4rem",
           display: "flex",
           justifyContent: "center",
+          alignItems: "center",
           paddingTop: "15px",
+          textAlign: "center",
         }}
         className="animate__animated animate__fadeInDown"
         
