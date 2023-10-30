@@ -1,4 +1,3 @@
-import React from "react";
 
 function Title() {
   return (
@@ -8,9 +7,10 @@ function Title() {
           fontSize: "4rem",
           display: "flex",
           justifyContent: "center",
-          paddingTop: '15px',
+          paddingTop: "15px",
         }}
         className="animate__animated animate__fadeInDown"
+        
       >
         The Drake Equation
       </h1>
@@ -19,7 +19,7 @@ function Title() {
           fontSize: "1.5rem",
           display: "flex",
           justifyContent: "center",
-          paddingTop: '10px',
+          paddingTop: "10px",
         }}
         className="animate__animated animate__fadeInDown"
       >

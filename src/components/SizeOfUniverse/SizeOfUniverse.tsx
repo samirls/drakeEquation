@@ -25,12 +25,15 @@ import { HiArrowRight } from "react-icons/hi";
 import slidesData from "./slidesData";
 import { RxChevronLeft, RxChevronRight } from "react-icons/rx";
 import { TbCircleChevronLeft, TbCircleChevronRight } from "react-icons/tb";
+import Joyride from "react-joyride";
+import sizeOfUniverseSteps from '../joyride/sizeOfUniverseSteps'
 
 interface sizeOfUniverseProps {
   goToNextPage: () => void;
+  tour: boolean;
 }
 
-function SizeOfUniverse({ goToNextPage }: sizeOfUniverseProps) {
+function SizeOfUniverse({ goToNextPage, tour }: sizeOfUniverseProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalTitle, setModalTitle] = useState("");
   const [modalSubTitle, setModalSubTitle] = useState("");
@@ -38,6 +41,7 @@ function SizeOfUniverse({ goToNextPage }: sizeOfUniverseProps) {
   const [about, setAbout] = useState("");
   const [slidesDataIndex, setSlidesDataIndex] = useState<number>(0);
   const [fadeOut, setFadeOut] = useState(false);
+  const [startTour, setStartTour] = useState(false);
 
   const handleClick = () => {
     setFadeOut(true);
@@ -69,6 +73,10 @@ function SizeOfUniverse({ goToNextPage }: sizeOfUniverseProps) {
       setSrc(slidesData[previousIndex].src);
     }
   };
+
+  setTimeout(() => {
+    setStartTour(true);
+  }, 2000);
 
   return (
     <Box>
@@ -102,9 +110,7 @@ function SizeOfUniverse({ goToNextPage }: sizeOfUniverseProps) {
       >
         Click for more info
       </h1>
-      <Box
-        className={fadeOut ? "animate__animated animate__fadeOut" : ""}
-      >
+      <Box className={fadeOut ? "animate__animated animate__fadeOut" : ""}>
         <Box
           sx={{ paddingTop: "80px" }}
           className="animate__animated animate__fadeIn"
@@ -124,6 +130,7 @@ function SizeOfUniverse({ goToNextPage }: sizeOfUniverseProps) {
             onSlideChange={(swiper: any) => {
               console.log(swiper.activeIndex);
             }}
+            id="step3"
           >
             {slidesData.map((item, index) => {
               return (
@@ -178,11 +185,12 @@ function SizeOfUniverse({ goToNextPage }: sizeOfUniverseProps) {
             </Modal>
           </Swiper>
 
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Box sx={{ display: "flex", justifyContent: "center" }} >
             <Button
               sx={{ marginTop: "50px", width: "10%" }}
               rightIcon={<HiArrowRight />}
               onClick={handleClick}
+              id="step4"
             >
               Drake Equation
             </Button>
@@ -211,6 +219,24 @@ function SizeOfUniverse({ goToNextPage }: sizeOfUniverseProps) {
           </a>
           <TfiNewWindow />
         </Box>
+        <Joyride
+          continuous
+          run={startTour && tour}
+          hideCloseButton
+          scrollToFirstStep
+          showProgress
+          showSkipButton
+          steps={sizeOfUniverseSteps}
+          styles={{
+            options: {
+              arrowColor: "gray",
+              backgroundColor: "black",
+              primaryColor: "#838383",
+              textColor: "#ffffff",
+              overlayColor: "rgba(15, 9, 43, 0.785)",
+            },
+          }}
+        />
       </Box>
     </Box>
   );

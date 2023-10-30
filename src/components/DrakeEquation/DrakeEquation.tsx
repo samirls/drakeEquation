@@ -3,18 +3,22 @@ import styles from './DrakeEquation.module.css'
 import React, {useState} from "react";
 import DrawerData from "./DrawerData";
 import {BsCalculator} from 'react-icons/bs'
+import Joyride from "react-joyride";
+import drakeEquationSteps from "../joyride/drakeEquationSteps";
 
 interface sizeOfUniverseProps {
   goToNextPage: () => void;
+  tour: boolean;
 }
 
-function DrakeEquation({goToNextPage}:sizeOfUniverseProps) {
+function DrakeEquation({goToNextPage, tour}:sizeOfUniverseProps) {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef<HTMLButtonElement | null>(null);
   const [drawerTitle, setDrawerTitle] = useState('');
   const [drawerDescription1, setDrawerDescription1] = useState('');
   const [drawerDescription2, setDrawerDescription2] = useState('');
+  const [startTour, setStartTour] = useState(false);
 
   const fillN = () => {
     setDrawerTitle(DrawerData[0].title);
@@ -46,6 +50,10 @@ function DrakeEquation({goToNextPage}:sizeOfUniverseProps) {
     setDrawerDescription2(DrawerData[4].description2 ?? '');
   }
 
+  setTimeout(() => {
+    setStartTour(true);
+  }, 3000);
+
   return (
     <>
       <h1
@@ -70,8 +78,8 @@ function DrakeEquation({goToNextPage}:sizeOfUniverseProps) {
       >
         What are the odds of being alone in the universe? Our best guess.
       </h5>
-      <HStack style={{display: 'flex', justifyContent: 'center', paddingTop: '100px'}}>
-        <Box style={{fontSize: '3.3rem'}} className="animate__animated animate__zoomInLeft animate__slower"><span className={styles.unknow} onClick={() => {onOpen(); fillN()}}>N</span> = <span className={styles.unknow} onClick={()=> {onOpen(); fillR()}}>R*</span></Box>
+      <HStack style={{display: 'flex', justifyContent: 'center', marginTop: '100px'}} id="step5">
+        <Box id="step6" style={{fontSize: '3.3rem'}} className="animate__animated animate__zoomInLeft animate__slower"><span className={styles.unknow} onClick={() => {onOpen(); fillN()}}>N</span> = <span className={styles.unknow} onClick={()=> {onOpen(); fillR()}}>R*</span></Box>
         <Box style={{fontSize: '3.3rem'}} className={`${styles.unknow} animate__animated animate__zoomInDown animate__slower`} onClick={()=> {onOpen(); fillFpNe()}}><span style={{fontSize: '3rem', paddingRight: '18px', paddingLeft: '12px'}}>&#8729;</span>f<span style={{fontSize: '1.8rem'}}>p</span> <span style={{fontSize: '3rem', paddingRight: '18px'}}>&#8729;</span>n<span style={{fontSize: '1.8rem'}}>e</span></Box>
         <Box style={{fontSize: '3.3rem'}} className={`${styles.unknow} animate__animated animate__zoomInDown animate__slower`} onClick={()=> {onOpen(); fillFlFi()}}><span style={{fontSize: '3rem', paddingRight: '18px', paddingLeft: '18px'}}>&#8729;</span>f<span style={{fontSize: '1.8rem'}}>l</span> <span style={{fontSize: '3rem', paddingRight: '18px'}}>&#8729;</span>f<span style={{fontSize: '1.8rem'}}>i</span></Box>
         <Box style={{fontSize: '3.3rem'}} className={`${styles.unknow} animate__animated animate__zoomInRight animate__slower`} onClick={()=> {onOpen(); fillFcL()}}><span style={{fontSize: '3rem', paddingRight: '18px', paddingLeft: '18px'}}>&#8729;</span>f<span style={{fontSize: '1.8rem'}}>c</span> <span style={{fontSize: '3rem', paddingRight: '18px'}}>&#8729;</span>L</Box>
@@ -102,6 +110,24 @@ function DrakeEquation({goToNextPage}:sizeOfUniverseProps) {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
+      <Joyride
+        continuous
+        run={startTour && tour}
+        hideCloseButton
+        scrollToFirstStep
+        showProgress
+        showSkipButton
+        steps={drakeEquationSteps}
+        styles={{
+          options: {
+            arrowColor: 'gray',
+            backgroundColor: "black",
+            primaryColor: "#838383",
+            textColor: "#ffffff",
+            overlayColor: 'rgba(15, 9, 43, 0.785)',
+          },
+        }}
+      />
 
     </>
   );

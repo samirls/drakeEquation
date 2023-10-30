@@ -16,8 +16,15 @@ import {
 import React, { useState } from "react";
 import { MdOpenInNew } from "react-icons/md";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
+import Joyride from "react-joyride";
+import drakeCalculatorSteps from "../joyride/drakeCalculatorSteps";
 
-function DrakeCalculator() {
+interface DrakeCalculatorProps {
+  tour: boolean;
+}
+
+function DrakeCalculator({tour}:DrakeCalculatorProps) {
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [variables, setVariables] = useState({
     R: -1,
@@ -33,6 +40,7 @@ function DrakeCalculator() {
   const [isLoading, setIsLoading] = useState(false);
   const [animateNumbers, setAnimateNumbers] = useState(false);
   const [animateErase, setAnimateErase] = useState(false);
+  const [startTour, setStartTour] = useState(false);
 
   const handleCalculate = () => {
     setResult(-2);
@@ -102,6 +110,10 @@ function DrakeCalculator() {
     }, 200)
   };
 
+  setTimeout(() => {
+    setStartTour(true);
+  }, 2000);
+
   return (
     <>
       <h1
@@ -131,10 +143,11 @@ function DrakeCalculator() {
         <Box
           display="flex"
           justifyContent="center"
-          pt="100px"
+          mt="100px"
           fontSize="2rem"
           gap="4"
           width="80%"
+          id="step7"
         >
           <Box display="flex" minW="60px">
             N =
@@ -241,6 +254,7 @@ function DrakeCalculator() {
                 setVariables({ ...variables, L: parseFloat(e.target.value) })
               }
               className={animateNumbers ? "animate__animated animate__headShake" : ""}
+              id="step7"
             />
           </Box>
         </Box>
@@ -252,7 +266,7 @@ function DrakeCalculator() {
         onClick={onOpen}
         className="animate__animated animate__bounce"
       >
-        <Box display="flex" justifyContent="center" alignItems="center" gap={1}>
+        <Box display="flex" justifyContent="center" alignItems="center" gap={1} id="step8">
           cheat sheet
           <MdOpenInNew />
         </Box>
@@ -337,7 +351,7 @@ function DrakeCalculator() {
         className="animate__animated animate__fadeIn"
       >
         <Box display="flex" justifyContent="center" alignItems="center" gap={2}>
-          Drake Estimate:{" "}
+          Drake Estimate:
           <Tooltip
             placement="top-start"
             label="Drake's own estimate"
@@ -348,7 +362,7 @@ function DrakeCalculator() {
             </span>
           </Tooltip>
         </Box>
-        <Box display="flex" justifyContent="center" gap={4} color="white">
+        <Box display="flex" justifyContent="center" gap={4} color="white" id="step9">
           <Button
             size="xs"
             colorScheme="teal"
@@ -373,8 +387,8 @@ function DrakeCalculator() {
         gap="5"
         className="animate__animated animate__fadeIn"
       >
-        <Button onClick={() => handleCalculate()}>Calculate</Button>
-        <Button size="sm" onClick={() => clearAllFields()}>
+        <Button id="step10" onClick={() => handleCalculate()}>Calculate</Button>
+        <Button id="step11" size="sm" onClick={() => clearAllFields()}>
           Reset
         </Button>
       </Box>
@@ -399,6 +413,24 @@ function DrakeCalculator() {
           </ModalBody>
         </ModalContent>
       </Modal>
+      <Joyride
+        continuous
+        run={startTour && tour}
+        hideCloseButton
+        scrollToFirstStep
+        showProgress
+        showSkipButton
+        steps={drakeCalculatorSteps}
+        styles={{
+          options: {
+            arrowColor: 'gray',
+            backgroundColor: "black",
+            primaryColor: "#838383",
+            textColor: "#ffffff",
+            overlayColor: 'rgba(15, 9, 43, 0.785)',
+          },
+        }}
+      />
     </>
   );
 }
