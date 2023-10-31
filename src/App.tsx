@@ -61,6 +61,9 @@ function App() {
     }
   }, []);
 
+  setTimeout(() => {
+    setStartTour(true);
+  }, 1500);
 
   return (
     <ChakraProvider theme={theme}>

@@ -50,9 +50,6 @@ function Options({
       localStorage.setItem("DrakeEquationTour", JSON.stringify(newDisableTour));
     }
   };
-  setTimeout(() => {
-    setStartTour(true);
-  }, 1500);
 
   const handleSwitchChange = () => {
     if (switchPosition === 1) {
