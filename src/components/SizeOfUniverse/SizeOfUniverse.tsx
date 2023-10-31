@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Image,
   Img,
   Modal,
   ModalBody,
@@ -127,14 +128,14 @@ function SizeOfUniverse({ goToNextPage, tour }: sizeOfUniverseProps) {
             modules={[EffectCube, Navigation]}
             className={styles.swiper}
             onSlideChange={(swiper: any) => {
-              console.log(swiper.activeIndex);
+              //console.log(swiper.activeIndex);
             }}
             id="step3"
           >
             {slidesData.map((item, index) => {
               return (
                 <SwiperSlide key={index} className={styles.swiper_slide}>
-                  <img
+                  <Image
                     src={item.src}
                     alt={item.title}
                     onClick={() => {
