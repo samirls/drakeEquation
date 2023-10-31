@@ -56,33 +56,36 @@ function DrakeEquation({goToNextPage, tour}:sizeOfUniverseProps) {
 
   return (
     <>
-      <h1
-        style={{
-          fontSize: "3rem",
-          display: "flex",
-          justifyContent: "center",
-          paddingTop: "15px",
-        }}
+      <Box
+        fontSize= {{base:'2rem', lg:"3rem"}}
+        display= "flex"
+        justifyContent= "center"
+        paddingTop= "15px"
+        textAlign= "center"
         className="animate__animated animate__fadeInDown"
       >
         The Drake Equation
-      </h1>
-      <h5
-        style={{
-          fontSize: "1.5rem",
-          display: "flex",
-          justifyContent: "center",
-          paddingTop: "10px",
-        }}
+      </Box>
+      <Box
+        fontSize= {{base:'1.2rem', lg:"1.5rem"}}
+        display= "flex"
+        justifyContent= "center"
+        paddingTop= "10px"
+        textAlign= "center"
         className="animate__animated animate__fadeInDown"
       >
         What are the odds of being alone in the universe? Our best guess.
-      </h5>
-      <HStack style={{display: 'flex', justifyContent: 'center', marginTop: '100px'}} id="step5">
-        <Box id="step6" style={{fontSize: '3.3rem'}} className="animate__animated animate__zoomInLeft animate__slower"><span className={styles.unknow} onClick={() => {onOpen(); fillN()}}>N</span> = <span className={styles.unknow} onClick={()=> {onOpen(); fillR()}}>R*</span></Box>
-        <Box style={{fontSize: '3.3rem'}} className={`${styles.unknow} animate__animated animate__zoomInDown animate__slower`} onClick={()=> {onOpen(); fillFpNe()}}><span style={{fontSize: '3rem', paddingRight: '18px', paddingLeft: '12px'}}>&#8729;</span>f<span style={{fontSize: '1.8rem'}}>p</span> <span style={{fontSize: '3rem', paddingRight: '18px'}}>&#8729;</span>n<span style={{fontSize: '1.8rem'}}>e</span></Box>
-        <Box style={{fontSize: '3.3rem'}} className={`${styles.unknow} animate__animated animate__zoomInDown animate__slower`} onClick={()=> {onOpen(); fillFlFi()}}><span style={{fontSize: '3rem', paddingRight: '18px', paddingLeft: '18px'}}>&#8729;</span>f<span style={{fontSize: '1.8rem'}}>l</span> <span style={{fontSize: '3rem', paddingRight: '18px'}}>&#8729;</span>f<span style={{fontSize: '1.8rem'}}>i</span></Box>
-        <Box style={{fontSize: '3.3rem'}} className={`${styles.unknow} animate__animated animate__zoomInRight animate__slower`} onClick={()=> {onOpen(); fillFcL()}}><span style={{fontSize: '3rem', paddingRight: '18px', paddingLeft: '18px'}}>&#8729;</span>f<span style={{fontSize: '1.8rem'}}>c</span> <span style={{fontSize: '3rem', paddingRight: '18px'}}>&#8729;</span>L</Box>
+      </Box>
+      <HStack 
+        display= 'flex' 
+        justifyContent= 'center' 
+        marginTop= '100px' 
+        id="step5"
+      >
+        <Box id="step6" fontSize= {{base: '1.8rem', lg: '3.3rem'}} className="animate__animated animate__zoomInLeft animate__slower"><Box as="span" className={styles.unknow} onClick={() => {onOpen(); fillN()}}>N</Box> = <Box as='span' className={styles.unknow} onClick={()=> {onOpen(); fillR()}}>R*</Box></Box>
+        <Box fontSize= {{base: '1.8rem', lg: '3.3rem'}} className={`${styles.unknow} animate__animated animate__zoomInDown animate__slower`} onClick={()=> {onOpen(); fillFpNe()}}><Box as='span' fontSize={{base: '1.5rem', lg:'3rem'}} paddingRight={{base: '3px', lg:'18px'}} paddingLeft={{base: '3px', lg: '12px'}}>&#8729;</Box>f<Box as="span" fontSize={{base: '1rem', lg:'1.8rem'}}>p</Box> <Box as="span" fontSize={{base: '1.5rem', lg:'3rem'}} paddingRight= {{base: '5px', lg: '18px'}}>&#8729;</Box>n<Box as="span" fontSize={{base:'1rem', lg:'1.8rem'}}>e</Box></Box>
+        <Box fontSize= {{base: '1.8rem', lg: '3.3rem'}} className={`${styles.unknow} animate__animated animate__zoomInDown animate__slower`} onClick={()=> {onOpen(); fillFlFi()}}><Box as='span' fontSize={{base: '1.5rem', lg:'3rem'}} paddingRight={{base: '3px', lg:'18px'}} paddingLeft={{base: '3px', lg: '18px'}}>&#8729;</Box>f<Box as="span" fontSize={{base: '1rem', lg:'1.8rem'}}>l</Box> <Box as="span" fontSize={{base: '1.5rem', lg:'3rem'}} paddingRight= {{base: '5px', lg: '18px'}}>&#8729;</Box>f<Box as="span" fontSize={{base:'1rem', lg:'1.8rem'}}>i</Box></Box>
+        <Box fontSize= {{base: '1.8rem', lg: '3.3rem'}} className={`${styles.unknow} animate__animated animate__zoomInRight animate__slower`} onClick={()=> {onOpen(); fillFcL()}}><Box as='span' fontSize={{base: '1.5rem', lg:'3rem'}} paddingRight={{base: '3px', lg:'18px'}} paddingLeft={{base: '3px', lg: '18px'}}>&#8729;</Box>f<Box as="span" fontSize={{base: '1rem', lg:'1.8rem'}}>c</Box> <Box as="span" fontSize={{base: '1.5rem', lg:'3rem'}} paddingRight= {{base: '5px', lg: '18px'}}>&#8729;</Box>L</Box>
       </HStack>
       <Box display='flex' justifyContent='center' pt='80px' className="animate__animated animate animate__fadeIn animate__slower animate__delay-3s">
         <Button rightIcon={<BsCalculator />} onClick={goToNextPage}>Drake Calculator</Button>
@@ -92,7 +95,7 @@ function DrakeEquation({goToNextPage, tour}:sizeOfUniverseProps) {
         placement='right'
         onClose={onClose}
         finalFocusRef={btnRef}
-        size='md'
+        size={{base: 'xs', lg:'md'}}
         
       >
         <DrawerOverlay />

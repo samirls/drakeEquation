@@ -1,5 +1,5 @@
 import { Box, Button, Switch } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import useStore from "../../stores/store";
 
 interface OptionsProps {
@@ -47,10 +47,7 @@ function Options({
     const newDisableTour = !tour;
     setTour(newDisableTour);
     if (rememberChanges === true) {
-      localStorage.setItem(
-        "DrakeEquationTour",
-        JSON.stringify(newDisableTour)
-      );
+      localStorage.setItem("DrakeEquationTour", JSON.stringify(newDisableTour));
     }
   };
   setTimeout(() => {
@@ -77,38 +74,41 @@ function Options({
   };
 
   return (
-    <Box
-      position="absolute"
-      top={{base: "50%", lg:"5"}}
-      right={{base: "1", lg:"5"}}
-      flexDir="column"
-      width="190px"
-      className="animate__animated animate__fadeIn"
-      background={{base:'blackAlpha.800', lg:'blackAlpha.600'}}
-      borderRadius='12px'
-    >
-      <Box display="flex" alignItems="center">
-        <Switch
-          onChange={handleSwitchChange}
-          isDisabled={switchPosition === 3}
-          isChecked={switchPosition === 2}
-        />
-        <Box pl="10px">Allow Controls</Box>
+      <Box
+        position="absolute"
+        top={{ base: "50%", lg: "5" }}
+        right={{ base: "1", lg: "5" }}
+        flexDir="column"
+        width="190px"
+        className="animate__animated animate__fadeIn"
+        background={{ base: "blackAlpha.800", lg: "blackAlpha.600" }}
+        borderRadius="12px"
+      >
+        <Box display="flex" alignItems="center">
+          <Switch
+            onChange={handleSwitchChange}
+            isDisabled={switchPosition === 3}
+            isChecked={switchPosition === 2}
+          />
+          <Box pl="10px">Allow Controls</Box>
+        </Box>
+        <Box display="flex" alignItems="center">
+          <Switch onChange={handleDisableTour} isChecked={!tour} />
+          <Box pl="10px">Disable Tour</Box>
+        </Box>
+        <Box display="flex" alignItems="center">
+          <Switch
+            onChange={handleRememberChanges}
+            isChecked={rememberChanges}
+          />
+          <Box pl="10px">Remember Changes</Box>
+        </Box>
+        <Box display="flex" justifyContent="center">
+          <Button size="xs" onClick={() => setOptions(false)}>
+            Close
+          </Button>
+        </Box>
       </Box>
-      <Box display="flex" alignItems="center">
-        <Switch onChange={handleDisableTour} isChecked={!tour} />
-        <Box pl="10px">Disable Tour</Box>
-      </Box>
-      <Box display="flex" alignItems="center">
-        <Switch onChange={handleRememberChanges} isChecked={rememberChanges} />
-        <Box pl="10px">Remember Changes</Box>
-      </Box>
-      <Box display="flex" justifyContent="center">
-        <Button size="xs" onClick={() => setOptions(false)}>
-          Close
-        </Button>
-      </Box>
-    </Box>
   );
 }
 

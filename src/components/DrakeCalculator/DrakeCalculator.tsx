@@ -16,6 +16,7 @@ import {
 import React, { useState } from "react";
 import { MdOpenInNew } from "react-icons/md";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
+import {IoIosPhoneLandscape} from "react-icons/io"
 import Joyride from "react-joyride";
 import drakeCalculatorSteps from "../joyride/drakeCalculatorSteps";
 
@@ -116,40 +117,50 @@ function DrakeCalculator({tour}:DrakeCalculatorProps) {
 
   return (
     <>
-      <h1
-        style={{
-          fontSize: "3rem",
-          display: "flex",
-          justifyContent: "center",
-          paddingTop: "15px",
-        }}
+      <Box
+        fontSize= {{base:'2rem', lg:"3rem"}}
+        display= "flex"
+        justifyContent= "center"
+        paddingTop= "15px"
+        textAlign= "center"
+
         className="animate__animated animate__fadeInDown"
       >
         Drake Calculator
-      </h1>
-      <h5
-        style={{
-          fontSize: "1.5rem",
-          display: "flex",
-          justifyContent: "center",
-          paddingTop: "10px",
-        }}
+      </Box>
+      <Box
+        fontSize= {{base:'1.2rem', lg:"1.5rem"}}
+        display= "flex"
+        justifyContent= "center"
+        paddingTop= "10px"
+        textAlign= "center"
         className="animate__animated animate__fadeInDown"
       >
         Make your own evaluation of each variable to test if there is a chance
         of life in our Galaxy
-      </h5>
+      </Box>
+      <Box
+        fontSize= '1rem'
+        display= {{base:"flex", md:"none"}}
+        justifyContent= "center"
+        paddingTop= "10px"
+        alignItems='center'
+        textAlign= "center"
+      >
+        <Box pr='5px'>Change the device orientation for a better view</Box>
+        <IoIosPhoneLandscape fontSize='2.2rem'/>
+      </Box>
       <Box display="flex" justifyContent="center" className={animateErase ? "animate__animated animate__flash" : "animate__animated animate__bounce"}>
         <Box
           display="flex"
           justifyContent="center"
-          mt="100px"
+          mt={{base: '40px', lg:"100px"}}
           fontSize="2rem"
-          gap="4"
+          gap={{base: "0.3", lg:"4"}}
           width="80%"
           id="step7"
         >
-          <Box display="flex" minW="60px">
+          <Box display="flex" minW={{base:'60px', lg:"60px"}}>
             N =
           </Box>
           <Box>
@@ -274,12 +285,12 @@ function DrakeCalculator({tour}:DrakeCalculatorProps) {
 
       <Box display="flex" justifyContent="center" alignItems="center" pt="20px" className="animate__animated animate__fadeIn">
         <Box
-          width="50%"
-          height="80px"
+          width={{base: '90%',lg:"50%"}}
+          height={{base:'130px', lg:"80px"}}
           background="blackAlpha.600"
           borderRadius="12px"
         >
-          <Box fontSize="1.2rem" height="100%">
+          <Box fontSize={{base:'0.8rem',lg:"1.2rem"}} height="100%">
             {isLoading === true ? (
               <Box
                 display="flex"
@@ -302,16 +313,14 @@ function DrakeCalculator({tour}:DrakeCalculatorProps) {
                   height="50%"
                 >
                   There are{" "}
-                  <span
-                    style={{
-                      color: "white",
-                      fontSize: "1.5rem",
-                      fontWeight: "bolder",
-                      padding: "9px",
-                    }}
+                  <Box
+                    color= "white"
+                    fontSize= {{base:'1.1rem', lg:"1.5rem"}}
+                    fontWeight= "bolder"
+                    padding= "9px"
                   >
                     {result.toLocaleString()}
-                  </span>
+                  </Box>
                   civilizations in our galaxy
                 </Box>
                 <Box
@@ -319,7 +328,7 @@ function DrakeCalculator({tour}:DrakeCalculatorProps) {
                   justifyContent="center"
                   alignItems="center"
                   height="50%"
-                  fontSize="0.9rem"
+                  fontSize={{base:'0.7rem', lg:"0.9rem"}}
                 >
                   Result without rounding: {result}
                 </Box>
@@ -392,10 +401,10 @@ function DrakeCalculator({tour}:DrakeCalculatorProps) {
           Reset
         </Button>
       </Box>
-      <Box width='100%' display='flex' justifyContent='flex-end' pr='40px'>
-        <Box width='400px' fontStyle='oblique' textAlign='justify' >
+      <Box width='100%' display='flex' justifyContent={{base:'center', lg:'flex-end'}} pr={{base:'0', lg:'40px'}} pt={{base: '25px', lg: '0px'}} fontSize={{base: '0.8rem', lg: '1rem'}}>
+        <Box width={{base: '90%',lg:'400px'}} fontStyle='oblique' textAlign='justify' >
           "Only 0.000 000 000 000 000 000 000 000 000 000 000 000 000 1% of the observable universe lies within our solar system. So lets start building starships - it's a big universe out there. :-)"
-          <Box width='400px' display='flex' justifyContent='flex-end' fontWeight='bold' fontStyle='normal'>
+          <Box width={{base: '90%',lg:'400px'}} display='flex' justifyContent='flex-end' fontWeight='bold' fontStyle='normal'>
             Richard Powell
           </Box>
         </Box>
